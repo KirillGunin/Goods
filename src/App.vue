@@ -1,32 +1,30 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <Navbar/>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+  // @ to src
+  import Navbar from "@/components/Navbar.vue";
+  export default {
+    components: {
+    Navbar
+  },
 }
+</script>
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+<style lang="scss">
+@import '~materialize-css/dist/css/materialize.min.css';
+#app {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-image: url('@/assets/background.jpeg');
+  background-size: cover;
 }
 </style>
