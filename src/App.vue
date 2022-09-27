@@ -29,9 +29,9 @@
   background-size: cover;
 }
 .container {
-  width: 95%;
+  width: 98%;
   display: flex;
-  // justify-content: flex-start;
+  justify-content: center;
   padding: 25px;
 }
 </style>

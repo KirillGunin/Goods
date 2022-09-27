@@ -8,7 +8,7 @@
           <input v-model="name" placeholder="Введите наименование товара" type="text" class="input" required>
         </div>
         <div class="input-field">Описание товара
-          <textarea v-model="descr" placeholder="Введите описание товара" type="text" id="textarea1" class="materialize-textarea" required></textarea>
+          <textarea v-model="descr" placeholder="Введите описание товара" type="text" class="textarea"></textarea>
         </div>
         <div class="input-field">Ссылка на изображение товара
           <input v-model="href" placeholder="Введите ссылку" type="text" class="input" required>
@@ -50,12 +50,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .row-1 {
-  width: 33%;
+  min-width: 26%;
 }
 .col-table {
-  width: 290px;
+  width: 300px;
 }
 
 .form {
@@ -65,6 +65,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
 .input-field {
@@ -82,7 +83,7 @@ input:last-child{
     box-shadow: 3px 3px 3px rgb(118, 118, 118);
   }
 
-#textarea1 {
+.textarea {
   height: 100px;
   width: -webkit-fill-available;
   margin-bottom: 0px;
