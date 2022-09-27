@@ -1,30 +1,37 @@
 <template>
   <div id="app">
-    <Navbar/>
     <div class="container">
-      <router-view/>
+      <AddNew/>
+      <List/>
     </div>
   </div>
 </template>
 
 <script>
   // @ to src
-  import Navbar from "@/components/Navbar.vue";
+  import List from "@/views/List.vue"
+  import AddNew from "./views/AddNew.vue";
   export default {
     components: {
-    Navbar
+    List,
+    AddNew
   },
 }
 </script>
 
 <style lang="scss">
-@import '~materialize-css/dist/css/materialize.min.css';
 #app {
   height: 100%;
   width: 100%;
   position: fixed;
   bottom: 0;
-  background-image: url('@/assets/background.jpeg');
+  background-color: rgb(238, 237, 237);
   background-size: cover;
+}
+.container {
+  width: 95%;
+  display: flex;
+  // justify-content: flex-start;
+  padding: 25px;
 }
 </style>
