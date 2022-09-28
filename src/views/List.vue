@@ -1,13 +1,16 @@
 <template>
   <div class="row-2">
     <!-- <h2 class="selector">ttt</h2> -->
+    <div class="row-container">
+    <div class="filter">
       <select class="selector">
         <option disabled selected>По наименованию</option>
         <option>По возрастанию цены</option>
         <option>По убыванию цены</option>
       </select >
-    <div class="col-list" v-if="goods.length">
+    </div>
 
+    <div class="col-list" v-if="goods.length">
       <!-- Списов товаров -->
       <div
       class="good"
@@ -23,8 +26,10 @@
           <h4 class="good-name">{{good.name}}</h4>
           <p class="good-descr">{{good.descr}}</p>
           <h4 class="good-price" v-if="good.price.length <= 3">{{good.price}} руб</h4>
-          <h4 class="good-price" v-if="good.price.length > 3 && good.price.length <= 5">{{`${good.price.substring(0,2)} ${good.price.substring(2)}`}} руб</h4>
-          <h4 class="good-price" v-if="good.price.length > 5 && good.price.length <= 6">{{`${good.price.substring(0,3)} ${good.price.substring(3)}`}} руб</h4>
+          <h4 class="good-price" v-if="good.price.length == 4">{{`${good.price.substring(0,1)} ${good.price.substring(1,4)}`}} руб</h4>
+          <h4 class="good-price" v-if="good.price.length == 5">{{`${good.price.substring(0,2)} ${good.price.substring(2,5)}`}} руб</h4>
+          <h4 class="good-price" v-if="good.price.length == 6">{{`${good.price.substring(0,3)} ${good.price.substring(3,6)}`}} руб</h4>
+
         </div>
       </div>
 
@@ -35,6 +40,7 @@
     <div v-else>
       <h2>Товары не найдены</h2>
     </div>
+  </div>
   </div>
 </template>
 
@@ -60,10 +66,18 @@ export default {
 
 <style lang="scss" scoped>
 .row-2 {
-  width: 67%;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-top: 28px;
+}
+.row-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 850px;
 }
 .col-list {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -83,6 +97,7 @@ export default {
   margin: 6px 16px 16px 16px;
   background-color: white;
   overflow-y: hidden;
+  display: flex;
   .svg {
     display: none
   }
@@ -121,9 +136,13 @@ img {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+.filter {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 17px;
+}
 .selector {
   display: flex;
   justify-content: flex-end;
-  margin: 9px;
   }
 </style>

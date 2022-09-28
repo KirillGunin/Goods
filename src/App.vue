@@ -27,11 +27,18 @@
   bottom: 0;
   background-color: rgb(238, 237, 237);
   background-size: cover;
+  overflow-y: scroll;
 }
 .container {
-  width: 98%;
   display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+@media (max-width: 479px) {
+  .container{
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 25px;
+  }
 }
 </style>
