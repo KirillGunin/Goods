@@ -1,42 +1,41 @@
 <template>
   <div class="row-2">
-    <!-- <h2 class="selector">ttt</h2> -->
     <div class="row-container">
-    <div class="filter">
-      <select class="selector">
-        <option disabled selected>По наименованию</option>
-        <option>По возрастанию цены</option>
-        <option>По убыванию цены</option>
-      </select >
-    </div>
+      <div class="filter">
+        <!-- Селектор -->
+        <select name="sortBy" id="sortBy" @change="sort(sortType)" v-model="sortType">
+          <option v-for="(item, index) in sortOptions" :value="item.value" :key="index">{{item.text}}</option>
+        </select>
+      </div>
 
-    <div class="col-list" v-if="goods.length">
-      <!-- Списов товаров -->
-      <div
-      class="good"
-      v-for="(good, index) in goods"
-      :key="good.id"
-      @mouseover="active = true"
-      @mouseleave="active = false"
-      >
-      <div>
-        <img class="svg" v-show="active" @click="deleteGood(index)" src="@/assets/icons8-delete.svg">
-        <img :src="good.href" alt="">
-        <div class="good-descriptions">
-          <h4 class="good-name">{{good.name}}</h4>
-          <p class="good-descr">{{good.descr}}</p>
-          <h4 class="good-price" v-if="good.price.length <= 3">{{good.price}} руб</h4>
-          <h4 class="good-price" v-if="good.price.length == 4">{{`${good.price.substring(0,1)} ${good.price.substring(1,4)}`}} руб</h4>
-          <h4 class="good-price" v-if="good.price.length == 5">{{`${good.price.substring(0,2)} ${good.price.substring(2,5)}`}} руб</h4>
-          <h4 class="good-price" v-if="good.price.length == 6">{{`${good.price.substring(0,3)} ${good.price.substring(3,6)}`}} руб</h4>
+      <!-- Списов товаров если он не пуст -->
+      <div class="col-list" v-if="goods.length">
+        <div
+        class="good"
+        v-for="(good, index) in goods"
+        :key="good.id"
+        @mouseover="active = true"
+        @mouseleave="active = false"
+        >
+        <div>
+          <img class="svg" v-show="active" @click="deleteGood(index)" src="@/assets/icons8-delete.svg">
+          <img :src="good.href" alt="">
+          <div class="good-descriptions">
+            <h4 class="good-name">{{good.name}}</h4>
+            <p class="good-descr">{{good.descr}}</p>
+            <!-- Валидация отображения цены -->
+            <h4 class="good-price" v-if="good.price.length <= 3">{{good.price}} руб</h4>
+            <h4 class="good-price" v-if="good.price.length == 4">{{`${good.price.substring(0,1)} ${good.price.substring(1,4)}`}} руб</h4>
+            <h4 class="good-price" v-if="good.price.length == 5">{{`${good.price.substring(0,2)} ${good.price.substring(2,5)}`}} руб</h4>
+            <h4 class="good-price" v-if="good.price.length == 6">{{`${good.price.substring(0,3)} ${good.price.substring(3,6)}`}} руб</h4>
+            <h4 class="good-price" v-if="good.price.length == 7">{{`${good.price.substring(0,4)} ${good.price.substring(4,7)}`}} руб</h4>
+          </div>
+        </div>
 
         </div>
       </div>
 
-      </div>
-    </div>
-
-    <!-- Если нет товаров -->
+    <!-- Если список товаров пуст -->
     <div v-else>
       <h2>Товары не найдены</h2>
     </div>
@@ -49,6 +48,12 @@ export default {
   data() {
     return {
       active: false,
+      sortType: 'sort',
+      sortOptions: [
+        { text: 'Сортировать', value: 'sort' },
+        { text: 'По возрастранию цены', value: 'priceASC' },
+        { text: 'По убыванию цены', value: 'priceDESC' }
+      ]
     }
   },
   computed: {
@@ -57,8 +62,17 @@ export default {
     },
   },
   methods: {
+    // Удаление
     deleteGood(index) {
     this.$store.dispatch('deleteGood', index)
+    },
+    // Сортировка
+    sort(sortType) {
+      if(sortType === 'priceASC') {
+        this.$store.dispatch('sortByPriceASC')
+      } else {
+        this.$store.dispatch('sortByPriceDESC')
+      }
     }
   }
 }
