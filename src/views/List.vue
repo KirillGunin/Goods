@@ -6,13 +6,13 @@
       <!-- Списов товаров -->
       <div
       class="good"
-      v-for="(good, index) of goods"
-      :key="index"
+      v-for="(good, index) in goods"
+      :key="good.id"
       @mouseover="active = true"
       @mouseleave="active = false"
       >
       <div>
-        <img class="svg" v-show="active" @click="deleteGood" src="@/assets/icons8-delete.svg">
+        <img class="svg" v-show="active" @click="deleteGood(index)" src="@/assets/icons8-delete.svg">
         <img :src="good.href" alt="">
         <div class="good-descriptions">
           <h4 class="good-name">{{good.name}}</h4>
@@ -43,11 +43,11 @@ export default {
   computed: {
     goods() {
       return this.$store.getters.goods
-    }
+    },
   },
   methods: {
-    deleteGood() {
-    console.log(`deleted`)
+    deleteGood(index) {
+    this.$store.dispatch('deleteGood', index)
     }
   }
 }
@@ -64,14 +64,12 @@ export default {
   justify-content: flex-start;
   margin-top: 14px;
 }
-
 .svg {
   height: 40px;
   width: 40px;
   margin-left: 225px;
   margin-top: -20px ;
 }
-
 .good {
   border-radius: 6px;
   cursor: pointer;
@@ -88,7 +86,6 @@ div.good:hover .svg {
   display: block;
   position: absolute
 }
-
 img {
   height: 50%;
   width: 250px;
@@ -104,19 +101,24 @@ img {
 .good-name {
   margin-left: 10px;
   height: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .good-descr {
   margin-left: 10px;
   height: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .good-price {
   margin-left: 10px;
   height: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .selector {
   display: flex;
   justify-content: flex-end;
   padding-right: 25px;
 }
-
 </style>

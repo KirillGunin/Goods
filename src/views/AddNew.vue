@@ -27,6 +27,7 @@
 export default {
   name: 'addNew',
   data: () => ({
+    id: Date.now(),
     name: '',
     descr: '',
     href: '',
@@ -35,12 +36,14 @@ export default {
   methods: {
     addNewGood() {
       const good = {
+        id: this.id,
         name: this.name,
         descr: this.descr,
         href: this.href,
         price: this.price,
       }
       this.$store.dispatch('newGood', good)
+      this.id = Date.now(),
       this.name = '',
       this.descr = '',
       this.href = '',
@@ -57,7 +60,6 @@ export default {
 .col-table {
   width: 300px;
 }
-
 .form {
   background-color: white;
   border-radius: 6px;
@@ -67,22 +69,20 @@ export default {
   align-items: center;
   margin-top: 20px;
 }
-
 .input-field {
   width: 100%;
   margin-bottom: 10px;
   padding: 5px;
 }
 input:last-child{
-    margin-top: 0px;
-    width: -webkit-fill-available;
-    height: 25px;
-    border-radius: 4px;
-    padding-left: 5px;
-    border: solid 1px;
-    box-shadow: 3px 3px 3px rgb(118, 118, 118);
-  }
-
+  margin-top: 0px;
+  width: -webkit-fill-available;
+  height: 25px;
+  border-radius: 4px;
+  padding-left: 5px;
+  border: solid 1px;
+  box-shadow: 3px 3px 3px rgb(118, 118, 118);
+}
 .textarea {
   height: 100px;
   width: -webkit-fill-available;
@@ -91,7 +91,6 @@ input:last-child{
   padding: 2px;
   box-shadow: 3px 3px 3px rgb(118, 118, 118);
 }
-
 .btn {
   width: -webkit-fill-available;
   height: 25px;
@@ -102,7 +101,4 @@ input:last-child{
   box-shadow: 3px 3px 3px rgb(118, 118, 118);
   cursor: pointer;
 }
-// h4 {
-//   margin: 20px 20px 20px 20px;
-// }
 </style>

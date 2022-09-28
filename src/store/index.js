@@ -8,18 +8,24 @@ export default new Vuex.Store({
     goods: JSON.parse(localStorage.getItem('goods') || '[]')
   },
   getters: {
-    goods: state => state.goods
-
+    goods: state => state.goods,
   },
   mutations: {
     newGood(state, good) {
       state.goods.push(good)
       localStorage.setItem('goods', JSON.stringify(state.goods))
+    },
+    deleteGood(state, index) {
+    state.goods.splice(index, 1)
+    localStorage.setItem('goods', JSON.stringify(state.goods))
     }
   },
   actions: {
     newGood({commit}, good) {
       commit('newGood', good)
+    },
+    deleteGood({commit}, index) {
+      commit('deleteGood', index)
     }
   },
   modules: {
