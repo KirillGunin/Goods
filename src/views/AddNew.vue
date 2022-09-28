@@ -81,6 +81,10 @@ export default {
 <style lang="scss" scoped>
 .row-1 {
   min-width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
 }
 .col-table {
   width: 300px;

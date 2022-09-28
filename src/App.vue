@@ -32,7 +32,13 @@
 .container {
   display: flex;
   justify-content: space-between;
-  padding-top: 30px;
+  padding: 30px;
+}
+
+@media (max-width: 479px) {
+  .container{
   flex-wrap: wrap;
+  justify-content: center;
+  }
 }
 </style>
