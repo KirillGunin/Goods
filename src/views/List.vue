@@ -1,6 +1,11 @@
 <template>
   <div class="row-2">
-    <h2 class="selector">ttt</h2>
+    <!-- <h2 class="selector">ttt</h2> -->
+      <select class="selector">
+        <option disabled selected>По наименованию</option>
+        <option>По возрастанию цены</option>
+        <option>По убыванию цены</option>
+      </select >
     <div class="col-list" v-if="goods.length">
 
       <!-- Списов товаров -->
@@ -119,6 +124,6 @@ img {
 .selector {
   display: flex;
   justify-content: flex-end;
-  padding-right: 25px;
-}
+  margin: 9px;
+  }
 </style>

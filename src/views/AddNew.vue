@@ -4,16 +4,28 @@
     <div class="col-table">
       <h2>Добавление товара</h2>
       <form class="form" @submit.prevent="addNewGood">
-        <div class="input-field">Наименование товара
+        <div class="input-field">
+          <div class="helper">
+            <p>Наименование товара</p>
+            <p class="star">*</p>
+          </div>
           <input v-model="name" placeholder="Введите наименование товара" type="text" class="input" required>
         </div>
         <div class="input-field">Описание товара
           <textarea v-model="descr" placeholder="Введите описание товара" type="text" class="textarea"></textarea>
         </div>
-        <div class="input-field">Ссылка на изображение товара
+        <div class="input-field">
+          <div class="helper">
+            <p>Ссылка на изображение товара</p>
+            <p class="star">*</p>
+          </div>
           <input v-model="href" placeholder="Введите ссылку" type="text" class="input" required>
         </div>
-        <div class="input-field">Цена товара
+        <div class="input-field">
+          <div class="helper">
+            <p>Цена товара</p>
+            <p class="star">*</p>
+          </div>
           <input v-model="price" placeholder="Введите цену" type="number" class="input" required>
         </div>
         <button class="btn" type="submit">Добавить товар</button>
@@ -100,5 +112,11 @@ input:last-child{
   border: none;
   box-shadow: 3px 3px 3px rgb(118, 118, 118);
   cursor: pointer;
+}
+.helper {
+  display: flex
+}
+.star{
+  color:rgb(187, 0, 0)
 }
 </style>
