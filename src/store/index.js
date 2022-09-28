@@ -18,6 +18,12 @@ export default new Vuex.Store({
     deleteGood(state, index) {
     state.goods.splice(index, 1)
     localStorage.setItem('goods', JSON.stringify(state.goods))
+    },
+    sortByPriceASC(state) {
+      state.goods.sort((a,b) => a.price - b.price)
+    },
+    sortByPriceDESC(state) {
+      state.goods.sort((a,b) => b.price - a.price)
     }
   },
   actions: {
@@ -26,6 +32,12 @@ export default new Vuex.Store({
     },
     deleteGood({commit}, index) {
       commit('deleteGood', index)
+    },
+    sortByPriceASC({commit}) {
+      commit('sortByPriceASC')
+    },
+    sortByPriceDESC({commit}) {
+      commit('sortByPriceDESC')
     }
   },
   modules: {
