@@ -60,13 +60,15 @@ export default {
 
 <style lang="scss" scoped>
 .row-2 {
-  width: 67%;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
 .col-list {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: 14px;
 }
 .svg {

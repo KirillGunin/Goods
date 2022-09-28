@@ -3,7 +3,7 @@
     <!-- Новая задача -->
     <div class="col-table">
       <h2>Добавление товара</h2>
-      <form class="form" @submit.prevent="addNewGood">
+      <form class="form" @submit.prevent="addNewGoodLazy">
         <div class="input-field">
           <div class="helper">
             <p>Наименование товара</p>
@@ -30,23 +30,36 @@
         </div>
         <button class="btn" type="submit">Добавить товар</button>
       </form>
+      <Preloader v-if="loading" :width="90" :height="90"/>
+      
+      <!-- Preloader -->
     </div>
-
   </div>
 </template>
 
 <script>
+import Preloader from '../components/UI/Preloader.vue'
 export default {
   name: 'addNew',
+  components: {Preloader},
   data: () => ({
     id: Date.now(),
     name: '',
     descr: '',
     href: '',
     price: '',
+    loading: false,
   }),
   methods: {
+    addNewGoodLazy() {
+      this.loading = true
+      setTimeout(() => {
+        this.addNewGood()
+      }, 3000)
+    },
+
     addNewGood() {
+      this.loading = false
       const good = {
         id: this.id,
         name: this.name,
@@ -67,10 +80,13 @@ export default {
 
 <style lang="scss" scoped>
 .row-1 {
-  min-width: 26%;
+  min-width: 30%;
 }
 .col-table {
   width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .form {
   background-color: white;
@@ -80,6 +96,7 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 .input-field {
   width: 100%;

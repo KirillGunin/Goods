@@ -27,11 +27,12 @@
   bottom: 0;
   background-color: rgb(238, 237, 237);
   background-size: cover;
+  overflow-y: scroll;
 }
 .container {
-  width: 98%;
   display: flex;
-  justify-content: center;
-  padding: 25px;
+  justify-content: space-between;
+  padding-top: 30px;
+  flex-wrap: wrap;
 }
 </style>

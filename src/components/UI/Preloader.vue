@@ -45,8 +45,8 @@ export default {
 
 .wInnerBall{
   position: absolute;
-  width: 5%;
-  height: 5%;
+  width: 6%;
+  height: 6%;
   background: #fe9d16;
   left:0px;
   top:0px;
@@ -54,23 +54,23 @@ export default {
 }
 
 #wBall_1 {
-  animation-delay: 0.796s;
+  animation-delay: 1.796s;
 }
 
 #wBall_2 {
-  animation-delay: 0.153s;
+  animation-delay: 1.153s;
 }
 
 #wBall_3 {
-  animation-delay: 0.3165s;
+  animation-delay: 1.3165s;
 }
 
 #wBall_4 {
-  animation-delay: 0.4695s;
+  animation-delay: 1.4695s;
 }
 
 #wBall_5 {
-  animation-delay: 0.633s;
+  animation-delay: 1.633s;
 }
 
 @keyframes orbit {
