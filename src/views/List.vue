@@ -83,7 +83,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 70%;
-  margin-top: 28px;
+  margin-top: 24px;
 }
 .row-container {
   display: flex;
