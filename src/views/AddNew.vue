@@ -28,7 +28,7 @@
           </div>
           <input v-model="price" placeholder="Введите цену" type="number" class="input" required>
         </div>
-        <button :disabeled="!name && !href && !price" class="btn" type="submit">Добавить товар</button>
+        <button :disabled="!name || !href || !price" class="btn" type="submit">Добавить товар</button>
       </form>
       <Preloader v-if="loading" :width="90" :height="90"/>
       
@@ -102,6 +102,19 @@ export default {
   margin-top: 20px;
   margin-bottom: 40px;
 }
+.btn:disabled {
+  background-color: #d4d4d4;;
+}
+.btn {
+  width: -webkit-fill-available;
+  height: 25px;
+  border-radius: 4px;
+  background-color: #4894df;
+  color: black;
+  border: none;
+  box-shadow: 3px 3px 3px rgb(118, 118, 118);
+  cursor: pointer;
+}
 .input-field {
   width: 100%;
   margin-bottom: 10px;
@@ -140,19 +153,6 @@ textarea {
   border-radius: 4px;
   padding: 2px;
   box-shadow: 3px 3px 3px rgb(118, 118, 118);
-}
-.btn {
-  width: -webkit-fill-available;
-  height: 25px;
-  border-radius: 4px;
-  background-color: #d4d4d4;
-  color: black;
-  border: none;
-  box-shadow: 3px 3px 3px rgb(118, 118, 118);
-  cursor: pointer;
-}
-.btn:hover {
-  background-color: rgba(172, 255, 47, 0.231);
 }
 .helper {
   display: flex
