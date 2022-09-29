@@ -28,7 +28,7 @@
           </div>
           <input v-model="price" placeholder="Введите цену" type="number" class="input" required>
         </div>
-        <button class="btn" type="submit">Добавить товар</button>
+        <button :disabeled="!name && !href && !price" class="btn" type="submit">Добавить товар</button>
       </form>
       <Preloader v-if="loading" :width="90" :height="90"/>
       
@@ -107,19 +107,36 @@ export default {
   margin-bottom: 10px;
   padding: 5px;
 }
-input:last-child{
+input:focus {
+  border: 2px solid #cddfe7;
+  outline: none;
+}
+input:invalid {
+  border-color: rgb(229, 91, 91)
+}
+input:not(:focus):invalid {
+  border-color:#cddfe7
+}
+input {
   margin-top: 0px;
   width: -webkit-fill-available;
   height: 25px;
   border-radius: 4px;
   padding-left: 5px;
-  border: solid 1px;
+  outline: none;
   box-shadow: 3px 3px 3px rgb(118, 118, 118);
+  border-style: solid;
 }
-.textarea {
+textarea:focus {
+  border: solid 2px #cddfe7;
+  outline: none;
+}
+
+textarea {
   height: 100px;
   width: -webkit-fill-available;
   margin-bottom: 0px;
+  border: solid 2px #cddfe7;
   border-radius: 4px;
   padding: 2px;
   box-shadow: 3px 3px 3px rgb(118, 118, 118);
@@ -133,6 +150,9 @@ input:last-child{
   border: none;
   box-shadow: 3px 3px 3px rgb(118, 118, 118);
   cursor: pointer;
+}
+.btn:hover {
+  background-color: rgba(172, 255, 47, 0.231);
 }
 .helper {
   display: flex
