@@ -28,7 +28,7 @@
           </div>
           <input v-model="price" placeholder="Введите цену" type="number" class="input" required>
         </div>
-        <button class="btn" type="submit">Добавить товар</button>
+        <button :disabled="!name || !href || !price" class="btn" type="submit">Добавить товар</button>
       </form>
       <Preloader v-if="loading" :width="90" :height="90"/>
       
@@ -102,37 +102,57 @@ export default {
   margin-top: 20px;
   margin-bottom: 40px;
 }
-.input-field {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 5px;
-}
-input:last-child{
-  margin-top: 0px;
-  width: -webkit-fill-available;
-  height: 25px;
-  border-radius: 4px;
-  padding-left: 5px;
-  border: solid 1px;
-  box-shadow: 3px 3px 3px rgb(118, 118, 118);
-}
-.textarea {
-  height: 100px;
-  width: -webkit-fill-available;
-  margin-bottom: 0px;
-  border-radius: 4px;
-  padding: 2px;
-  box-shadow: 3px 3px 3px rgb(118, 118, 118);
+.btn:disabled {
+  background-color: #d4d4d4;;
 }
 .btn {
   width: -webkit-fill-available;
   height: 25px;
   border-radius: 4px;
-  background-color: #d4d4d4;
+  background-color: #4894df;
   color: black;
   border: none;
   box-shadow: 3px 3px 3px rgb(118, 118, 118);
   cursor: pointer;
+}
+.input-field {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+input:focus {
+  border: 2px solid #cddfe7;
+  outline: none;
+}
+input:invalid {
+  border-color: rgb(229, 91, 91)
+}
+input:not(:focus):invalid {
+  border-color:#cddfe7
+}
+input {
+  margin-top: 0px;
+  width: -webkit-fill-available;
+  height: 25px;
+  border-radius: 4px;
+  padding-left: 5px;
+  outline: none;
+  box-shadow: 3px 3px 3px rgb(118, 118, 118);
+  border-style: solid;
+}
+textarea:focus {
+  border: solid 2px #cddfe7;
+  outline: none;
+}
+
+textarea {
+  height: 100px;
+  width: -webkit-fill-available;
+  margin-bottom: 0px;
+  border: solid 2px #cddfe7;
+  border-radius: 4px;
+  padding: 2px;
+  box-shadow: 3px 3px 3px rgb(118, 118, 118);
 }
 .helper {
   display: flex
